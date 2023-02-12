@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from "react";
+import "./index.scss";
 
-function App() {
+const App: React.FC = () => {
+  const [open, setOpen] = useState<boolean>(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => setOpen(true)} className="open-modal-btn">
+        ✨ Открыть окно
+      </button>
+      <div className={`overlay animated ${open ? "show" : ""}`}>
+        <div className="modal">
+          <svg
+            height="200"
+            viewBox="0 0 200 200"
+            width="200"
+            onClick={() => setOpen(false)}
+          >
+            <title />
+            <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
+          </svg>
+          <img src="https://media2.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" />
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
